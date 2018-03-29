@@ -39,11 +39,15 @@ dpkg --install pandoc.deb
 Here there be dragons ! Prepare yourself for 1 GB of obscure latex dependencies.
 
 ```shell
-sudo apt install lmodern texlive texlive-lang-french \
-                 texlive-luatex texlive-pstricks texlive-xetex fonts-lato
+sudo apt install `cat <<EOL
+lmodern fonts-lato
+texlive texlive-lang-french texlive-luatex texlive-pstricks texlive-xetex
+python3-pip python3-setuptools python3-wheel python3-yaml
+openssh-client rsync poppler-utils zlibc
+make git parallel wget
+EOL
+`
 ```
-
-
 
 ### 4. Pandoc filters
 
@@ -53,17 +57,7 @@ important ! The list of Python packages can be found in the
 
 
 ```shell
-sudo apt install python3-pip python3-setuptools python3-wheel python3-yaml
 sudo pip3 install -r requirements.txt
-```
-
-### 5. Misc.
-
-Some tools for post-production :
-
-```shell
-sudo apt install openssh-client rsync poppler-utils zlibc make \
-                 git parallel wget
 ```
 
 
